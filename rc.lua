@@ -139,19 +139,39 @@ globalkeys = gears.table.join(
    --Move focused client to screen
    
    --Move focused client to next screen
+   
+   awful.key({ modkey, "Shift"}, "Up",
+   function(c)
+	   local nmbrsOfScreens = screen:count()
+	   if nmbrsOfScreens > 1 then
+		if c.screen.index < nmbrsOfScreens then
+			c:move_to_screen()
+		else
+			c:move_to_screen(nmbrsOfScreens)
 
-   awful.key({ modkey, "Shift" }, "Up",
-   function()
-	client:move_to_screen ([s=c.screen.index+1])
-
-
+		end
+     	   end
    end,
-   {descritption = "Move focused client to the next screen", group = layout},
+   {description = "Move client to the next screen", group="layout"}),
 
    --Move focused client to next screen end
    
    --Move focused client to previous screen
    
+   awful.key({ modkey, "Shift"}, "Down",
+   function(c)
+	   local nmbrsOfScreens = screen:count()
+	   if nmbrsOfScreens > 1 then
+		if c.screen.index == 1 then
+			c:move_to_screen(nmbrsOfScreens)
+		else
+			c:move_to_screen(c.screen.index - 1)
+
+		end
+     	   end
+   end,
+   {description = "Move client to the previous screen", group="layout"}),
+
    --Move focused client to previous screen end
 
    --Move focused client to screen end
