@@ -136,7 +136,25 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
 
 
+   --Move focused client to screen
+   
+   --Move focused client to next screen
 
+   awful.key({ modkey, "Shift" }, "Up",
+   function()
+	client:move_to_screen ([s=c.screen.index+1])
+
+
+   end,
+   {descritption = "Move focused client to the next screen", group = layout},
+
+   --Move focused client to next screen end
+   
+   --Move focused client to previous screen
+   
+   --Move focused client to previous screen end
+
+   --Move focused client to screen end
 
     
 
